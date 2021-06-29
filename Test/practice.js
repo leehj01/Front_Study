@@ -151,20 +151,86 @@ if (isShow){
 // DOM API : HTML 을 제어할때 사용하는 명령 
 
 // HTML 요소 1개 검색/찾기
-let boxEL = document.querySelector('.box') // CSS 선택자를 통해서 HTML 에서 특정한 요소를 찾아서 boxEL에 넣는다.
+let boxEl = document.querySelector('.box') // CSS 선택자를 통해서 HTML 에서 특정한 요소를 찾아서 boxEL에 넣는다.
 
-console.log(boxEL)
+console.log(boxEl)
 
 // HTML 요소에 적용할 수 있는 메소드! 
-boxEL.addEventListener();
+boxEl.addEventListener();
 
 // 인수(Argumnts)를 추가 가능!
-boxEL.addEventListener(1,2);
+boxEl.addEventListener(1,2);
 
 // 1 - 이벤트 ( Event , 상황 ) - 클릭을하면 무엇을 할것이다! 
-boxEL.addEventListener('click',2);
+boxEl.addEventListener('click',2);
 
 // 최종 !! 2 - 핸들러(Handler, 실행할 함수)
-boxEL.addEventListener('click', function(){
+// 이벤트 이름은 다양한데, 나중에 천천히 배우면 됨 
+boxEl.addEventListener('click', function(){
     console.log('Click~!')
 })
+
+// HTML 요소 1개 검색/찾기
+let boxEl = document.querySelector('.box') // CSS 선택자를 통해서 HTML 에서 특정한 요소를 찾아서 boxEL에 넣는다.
+
+// 요소의 클래스 정보 객체 활용!
+boxEl.classList.add('active'); // Active 라는 클래스를 추가하는 것 
+let isContains = boxEL.classList.contains('active'); // active라는 함수가 있는지 체크. 있으면 True
+console.log(isContains); //true
+
+boxEl.classList.remove('active');
+isContains = boxEl.classList.contains('active');
+console.log(isContains); // false
+
+
+// 최종 !! 2 - 핸들러(Handler, 실행할 함수)
+// 이벤트 이름은 다양한데, 나중에 천천히 배우면 됨 
+boxEl.addEventListener('click', function(){
+    console.log('Click~!');
+    boxEl.classList.add('active');  // Active 라는 클래스를 추가하는 것 
+    console.log(
+        boxEl.classList.contains('active')
+    )
+    boxEl.classList.remove('active');
+    console.log(
+        boxEl.classList.contains('acvive')
+    )
+});
+
+
+// HTML 요소 모두 검색/ 찾기
+const boxEls = document.querySelectorAll('.box');
+console.log(boxEls);
+
+// 찾은 요소들 반복해서 함수 실행!
+// 익명 함수를 인수로 추가!
+boxEls.forEach(function() {});  // for 구문과 비슷함 
+
+// 첫번째 매개변수(boxEl) : 반복중인 요소 , 두번째 매개변수(index): 반복중인 번호 
+boxEls.forEach(function (boxEl, index) {});
+
+// 출력!
+boxEls.forEach(function (boxEl, index){
+    boxEl.classList.add(`order-${index + 1}`);
+    console.log(index, boxEl)
+})
+
+// 최종
+const boxEls = document.querySelectorAll('.box')
+
+boxEls.forEach(function (boxEl, index) {
+    boxEl.classList.add(`order-${index+1}`)
+    console.log(index, boxEl)
+})
+
+const boxEl = document.querySelector('.box');
+
+// Getter , 값을 얻는 용도
+console.log(boxEl.textContent); // Box!!
+
+// Setter, 값을 지정하는 용도
+boxEl.textContent = 'HEROPY?!'
+console.log(boxEl.textContent); // HEROPY?! -> 값자체를 box 에서 heropy로 바꿔줌 
+
+
+const a = 'Hello~'
